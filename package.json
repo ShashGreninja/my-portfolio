@@ -1,0 +1,21 @@
+{
+  "name": "my-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Personal portfolio site of Shaswat Suman",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vite": "^8.3.1"
+  },
+  "dependencies": {
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.26"
+  }
+}

@@ -1,0 +1,57 @@
+/* Full-bleed colour blocks (cobalt hero, ink marquee, bone and paper content, ink gallery, cobalt stack, ink contact)
+   with giant fitted display type. One committed look, not theme-switched. */
+:root {
+  --cobalt: #2230F5;
+  --ink: #0B0C12;
+  --ink-2: #171924;
+  --bone: #ECEDF1;
+  --paper: #F8F8FA;
+  --signal: #FF5A1F;
+  --mist: #8B90A5;
+  --slate: #4A4E60;
+  --line: rgba(11, 12, 18, .14);
+  --line-inv: rgba(255, 255, 255, .2);
+  --display: "Anybody", "Arial Black", Impact, sans-serif;
+  --body: "Geist", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Geist Mono", ui-monospace, Consolas, monospace;
+  --ease: cubic-bezier(.19, 1, .22, 1);
+  --gutter: clamp(16px, 3vw, 40px);
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bone); color: var(--ink);
+  font: 400 16px/1.55 var(--body); -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--signal); outline-offset: 4px; border-radius: 4px; }
+h1, h2, h3, p { margin: 0; }
+h2, h3 { text-wrap: balance; }
+
+.wrap { padding-inline: var(--gutter); }
+.mono { font: 500 12px/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.dark { background: var(--ink); color: var(--paper); }
+.blue { background: var(--cobalt); color: #fff; }
+
+/* film grain */
+body::after {
+  content: ""; position: fixed; inset: -50%; z-index: 90; pointer-events: none; opacity: .07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 1s steps(4) infinite;
+}
+@keyframes grain { 0%{transform:translate(0,0)} 25%{transform:translate(-3%,2%)} 50%{transform:translate(2%,-3%)} 75%{transform:translate(-2%,-1%)} 100%{transform:translate(0,0)} }
+
+.progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 80; background: var(--signal); transform-origin: 0 50%; transform: scaleX(0); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 6px 0 0; }
+.chips li { font: 500 12px/1 var(--body); padding: 7px 11px; border-radius: 999px; border: 1px solid var(--line); }
+
+.reveal-line { display: block; overflow: hidden; }
+.reveal-line > span { display: block; }
+
+@media (prefers-reduced-motion: reduce) {
+  body::after { animation: none; }
+}
