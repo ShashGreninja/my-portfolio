@@ -1,17 +1,19 @@
 # Shaswat Suman · Portfolio
 
-Personal portfolio site, styled as an electronics component datasheet (part `SS-2301EC26`).
-The hero is an interactive DIP-16 pinout where each pin maps to a skill.
+Personal portfolio site: kinetic display type, an interactive canvas hero (a nested data
+tree that flattens into a bar chart), smooth scrolling, a custom cursor and a pinned
+horizontal project gallery.
 
-A single static `index.html`: no build step, no dependencies beyond Google Fonts.
+A single static `index.html`. GSAP, ScrollTrigger and Lenis load from CDNs; fonts from Google Fonts.
+The page still works if a CDN fails, just without the scroll animations.
 
 ## Run locally
-
-Open `index.html` in a browser, or serve the folder:
 
 ```powershell
 python -m http.server 8000
 ```
+
+Then open http://localhost:8000.
 
 ## Deploy
 
@@ -19,5 +21,4 @@ Works as-is on GitHub Pages (Settings → Pages → deploy from `main`, root), N
 
 ## Editing content
 
-All content is in `index.html`. The pinout's pin labels and descriptions are the
-`left` / `right` arrays in the script at the bottom of the file.
+All content is in `index.html`. The rotating hero phrases are the `roles` array in the script.
