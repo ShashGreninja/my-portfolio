@@ -50,5 +50,9 @@ npm run preview    # serve the production build
 
 ## Deploy
 
-Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes `dist/` to GitHub Pages.
-The Vite `base` is `/my-portfolio/` to match the Pages URL.
+The site deploys to two hosts from the same `main` branch:
+
+- **Vercel** builds every push using `vercel.json` and serves the site from the domain root.
+- **GitHub Pages**: `.github/workflows/deploy.yml` builds and publishes `dist/` under `/my-portfolio/`.
+
+`vite.config.ts` picks the base path automatically: `/` when Vercel's `VERCEL` env var is set, `/my-portfolio/` otherwise.
