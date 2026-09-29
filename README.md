@@ -1,6 +1,6 @@
 # Shaswat Suman · Portfolio
 
-Personal portfolio site, live at **https://shashgreninja.github.io/my-portfolio/**.
+Personal portfolio site, live at **https://shashgreninja.github.io/my-portfolio/** and **https://shaswat-suman-portfolio.vercel.app/**.
 
 Built with **Vite + TypeScript**, animated with **GSAP** (ScrollTrigger) and **Lenis** smooth scrolling. No UI framework:
 the page is static HTML, and each interactive piece is a small typed module.
