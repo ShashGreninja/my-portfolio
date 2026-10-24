@@ -25,6 +25,24 @@
 .p-stc .panel-art { background: rgba(255, 255, 255, .04); color: var(--signal); }
 .p-edge { background: var(--signal); color: var(--ink); }
 .p-edge .panel-art { background: var(--ink); color: var(--signal); }
+/* deep evergreen panel; the illustration keeps a pale sky ground so the AQI colours read true */
+.p-chiku { background: var(--evergreen); color: #EAF5EF; }
+.p-chiku .panel-art { background: var(--sky); }
+.p-chiku .tag { color: #9FE3BF; }
+.p-chiku .panel-link:hover { background: #fff; border-color: #fff; color: var(--ink); }
+.p-chiku .panel-link.primary { background: #9FE3BF; border-color: #9FE3BF; color: var(--evergreen); }
+.p-chiku .panel-link.primary:hover { background: #fff; border-color: #fff; color: var(--ink); }
+
+/* live demo / source links inside a panel */
+.panel-links { display: flex; flex-wrap: wrap; gap: 10px; }
+.panel-link {
+  display: inline-flex; align-items: center; padding: 11px 16px; border-radius: 999px;
+  border: 1px solid currentColor; font: 600 14px/1 var(--body); position: relative; z-index: 1;
+  transition: background .3s var(--ease), color .3s var(--ease);
+}
+.panel-link:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
+.panel-link.primary { background: var(--ink); border-color: var(--ink); color: #fff; }
+.panel-link.primary:hover { background: var(--cobalt); border-color: var(--cobalt); }
 
 @media (min-width: 1000px) {
   .hwrap { height: 100vh; display: flex; align-items: center; }
@@ -51,7 +69,13 @@
 .packet { animation: packet 2.8s var(--ease) infinite; }
 @keyframes packet { 0% { transform: translateX(0); opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { transform: translateX(150px); opacity: 0; } }
 
+.sparrow { animation: hop 2.6s var(--ease) infinite; }
+@keyframes hop { 0%, 70%, 100% { translate: 0 0; } 78% { translate: 0 -7px; } 86% { translate: 0 0; } 92% { translate: 0 -3px; } }
+.best-window { animation: lit 3.2s infinite; }
+.budget-ring { animation: ring 3.6s var(--ease) infinite; }
+@keyframes ring { 0% { stroke-dasharray: 0 125.7; } 45%, 100% { stroke-dasharray: 22.6 125.7; } }
+
 @media (prefers-reduced-motion: reduce) {
-  .blink, .draw, .orbit, .tile-lit, .packet { animation: none; }
+  .blink, .draw, .orbit, .tile-lit, .packet, .sparrow, .best-window, .budget-ring { animation: none; }
   .draw { stroke-dashoffset: 0; }
 }
