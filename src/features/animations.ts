@@ -103,6 +103,7 @@ function initGallery(): void {
     const fill = $("#gp-fill");
     const nameEl = $("#gp-name");
     const indexEl = $("#gp-index");
+    $("#gp-total").textContent = String(names.length);
     let shown = -1;
     const updateProgress = (progress: number): void => {
       fill.style.transform = `scaleX(${progress})`;
