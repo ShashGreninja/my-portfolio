@@ -4,6 +4,7 @@ import "./styles/hero.css";
 import "./styles/sections.css";
 import "./styles/work.css";
 import "./styles/contact.css";
+import "./styles/extras.css";
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -19,7 +20,10 @@ import { HeroName } from "./features/heroName";
 import { startMarquee } from "./features/marquee";
 import { initNav } from "./features/nav";
 import { startRoleRotator } from "./features/roleRotator";
+import { initEasterEggs } from "./features/easterEggs";
+import { initShortcuts } from "./features/shortcuts";
 import { initSmoothScroll } from "./features/smoothScroll";
+import { initPanelSpotlight, initStackHints } from "./features/stackHints";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -49,13 +53,21 @@ flow.start();
 
 startClock($$("[data-clock]"));
 initNav($("#nav"), $("#progress"));
-initSmoothScroll(motion);
+const lenis = initSmoothScroll(motion);
 initCopyEmail($("#copy"), $("#copy-label"), $("#email"));
+initStackHints($("#stack-hint"));
+const scrollToSection = (target: HTMLElement): void => {
+  if (lenis) lenis.scrollTo(target, { duration: 1.4 });
+  else target.scrollIntoView({ behavior: motion ? "smooth" : "auto" });
+};
+initShortcuts(scrollToSection);
+initEasterEggs({ hero, nameChars: heroName.chars, flow, scrollTo: scrollToSection });
 
 if (hasFinePointer) {
   initCursor($("#cursor"), $("#cursor-label"));
   if (motion) {
     initMagnetic($$(".magnetic"));
+    initPanelSpotlight();
     heroName.enablePointerWeight(hero);
   }
 }

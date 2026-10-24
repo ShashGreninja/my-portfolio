@@ -63,7 +63,6 @@
   <section class="sec wrap" id="about" data-nav="light">
     <div class="sec-head">
       <h2 class="sec-title">About</h2>
-      <span class="sec-count">(01)</span>
     </div>
     <p class="statement" id="statement">At <span class="hl">IIT Patna</span> I build <span class="hl">full-stack products</span>, data pipelines and <span class="hl">LLM tools</span>, and I like the unglamorous middle of a system best. How the data is shaped, how fast it moves, and how it feels for the next developer who has to use what I ship.</p>
 
@@ -84,7 +83,6 @@
   <section class="sec paper wrap" id="experience" data-nav="light">
     <div class="sec-head">
       <h2 class="sec-title">Experience</h2>
-      <span class="sec-count">(02)</span>
     </div>
     <div class="exp">
       <div class="exp-side">
@@ -95,7 +93,6 @@
       </div>
       <div class="exp-items">
         <div class="exp-item">
-          <span class="k">01</span>
           <div>
             <h3>Highcharts Optimization Engine</h3>
             <p>I designed and built this product from scratch. Its aggregation pipeline takes deeply nested, unfiltered API data and turns it into chart-ready series, using a flattening algorithm that mixes DFS with cross-multiplication. I also wrote a prompt template to improve developer experience and let the engine plug in as an MCP tool.</p>
@@ -106,7 +103,6 @@
           </div>
         </div>
         <div class="exp-item">
-          <span class="k">02</span>
           <div>
             <h3>Feedback Collection Mechanism</h3>
             <p>I added feedback collection to existing Gen AI tools on the Elastic (ELK) stack, and built a Feedback Analytics dashboard in Kibana to show how those tools were being received.</p>
@@ -122,7 +118,6 @@
       <div class="htrack" id="htrack">
         <div class="work-intro">
           <div>
-            <span class="sec-count">(03)</span>
             <h2 class="sec-title">Selected work</h2>
           </div>
           <p>Four projects: an ML-backed platform, a forecasting app, a production website and an edge-to-cloud pipeline. Keep scrolling to move through them.</p>
@@ -236,13 +231,17 @@
           </div>
         </article>
       </div>
+      <div class="gallery-progress" id="gallery-progress" aria-hidden="true">
+        <span class="gp-name" id="gp-name">Collabnest</span>
+        <span class="gp-track"><i id="gp-fill"></i></span>
+        <span class="gp-count"><b id="gp-index">1</b> of 4</span>
+      </div>
     </div>
   </section>
 
   <section class="sec wrap" id="recognition" data-nav="light">
     <div class="sec-head">
       <h2 class="sec-title">Recognition</h2>
-      <span class="sec-count">(04)</span>
     </div>
     <div class="rows">
       <div class="row"><span class="row-date">Dec 2025</span><span class="row-title">Inter IIT Tech Meet 14.0</span><span class="row-sub">Pathway problem statement</span><span class="row-res">2nd</span></div>
@@ -252,7 +251,6 @@
 
     <div class="sub-head" id="leadership">
       <h3>Leadership</h3>
-      <span class="sec-count">(05)</span>
     </div>
     <div class="rows">
       <div class="row"><span class="row-date">Aug 2026 – now</span><span class="row-title">Senior Year Technical Secretary</span><span class="row-sub">Student Technical Council. Leading technical initiatives across every club at IIT Patna.</span><span class="row-res">STC</span></div>
@@ -266,13 +264,38 @@
     <div class="wrap">
       <div class="sec-head">
         <h2 class="sec-title">The stack</h2>
-        <span class="sec-count">(06)</span>
+        <p class="sec-note stack-hint" id="stack-hint" aria-live="polite">Hover or tap a tool to see where I've used it.</p>
       </div>
       <div class="stack-rows">
-        <div class="srow"><span class="mono">Languages</span><ul><li>TypeScript</li><li>JavaScript</li><li>Python</li><li>C++</li><li>C</li><li>C#</li></ul></div>
-        <div class="srow"><span class="mono">Web</span><ul><li>Next.js</li><li>Node.js</li><li>Express</li><li>Tailwind</li><li>Clerk</li></ul></div>
-        <div class="srow"><span class="mono">Data</span><ul><li>PostgreSQL</li><li>MySQL</li><li>Prisma</li><li>Elastic</li><li>Kibana</li></ul></div>
-        <div class="srow"><span class="mono">Cloud &amp; AI</span><ul><li>AWS</li><li>Azure</li><li>Docker</li><li>LLMs</li><li>MCP</li></ul></div>
+        <div class="srow"><span class="mono">Languages</span><ul>
+          <li tabindex="0" data-used="This portfolio, plus EdgeVision's cloud stack and dashboard.">TypeScript</li>
+          <li tabindex="0">JavaScript</li>
+          <li tabindex="0" data-used="Blue Spark's 14-day demand forecasting model.">Python</li>
+          <li tabindex="0" data-used="Data structures coursework at IIT Patna.">C++</li>
+          <li tabindex="0" data-used="EdgeVision's on-device pipeline, running on FreeRTOS.">C</li>
+          <li tabindex="0" data-used="Unity3D projects.">C#</li>
+        </ul></div>
+        <div class="srow"><span class="mono">Web</span><ul>
+          <li tabindex="0" data-used="Blue Spark and the STC IIT Patna web app.">Next.js</li>
+          <li tabindex="0">Node.js</li>
+          <li tabindex="0">Express</li>
+          <li tabindex="0" data-used="Blue Spark and the STC IIT Patna web app.">Tailwind</li>
+          <li tabindex="0">Clerk</li>
+        </ul></div>
+        <div class="srow"><span class="mono">Data</span><ul>
+          <li tabindex="0">PostgreSQL</li>
+          <li tabindex="0">MySQL</li>
+          <li tabindex="0" data-used="Blue Spark's inventory data layer.">Prisma</li>
+          <li tabindex="0" data-used="Feedback collection for Gen AI tools at Goldman Sachs.">Elastic</li>
+          <li tabindex="0" data-used="The Feedback Analytics dashboard at Goldman Sachs.">Kibana</li>
+        </ul></div>
+        <div class="srow"><span class="mono">Cloud &amp; AI</span><ul>
+          <li tabindex="0" data-used="EdgeVision: IoT Core, DynamoDB, Lambda and API Gateway.">AWS</li>
+          <li tabindex="0">Azure</li>
+          <li tabindex="0">Docker</li>
+          <li tabindex="0" data-used="The prompt template behind the Highcharts engine at Goldman Sachs.">LLMs</li>
+          <li tabindex="0" data-used="Plugging the Highcharts engine into LLM tooling at Goldman Sachs.">MCP</li>
+        </ul></div>
       </div>
     </div>
   </section>
@@ -291,10 +314,11 @@
       </div>
       <button class="orb magnetic" id="copy" type="button" data-cursor="Copy"><span><span id="copy-label">Copy email</span><small>to clipboard</small></span></button>
     </div>
-    <div class="foot mono">
-      <span>© 2026 <b>Shaswat Suman</b></span>
-      <span>Local time <b data-clock>--:--</b> IST</span>
-      <a href="#top" data-scroll>Back to top ↑</a>
+    <div class="foot">
+      <span>© 2026 <b>Shaswat Suman</b>. Built with Vite, TypeScript and GSAP. <a href="https://github.com/ShashGreninja/my-portfolio" target="_blank" rel="noopener">Read the source</a></span>
+      <span>It's <b data-clock>--:--</b> in Patna</span>
+      <span class="foot-keys">Press <kbd>?</kbd> for shortcuts</span>
+      <a href="#top" data-scroll>Back to top</a>
     </div>
   </section>
 </main>

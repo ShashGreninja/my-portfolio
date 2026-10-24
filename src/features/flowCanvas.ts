@@ -66,6 +66,11 @@ export class FlowCanvas {
   private pointer = { x: -9999, y: -9999, targetX: -9999, targetY: -9999 };
   private scrollProgress = 0;
   private visible = true;
+  /** Last drawn morph progress, so a manual toggle starts from where the chart is. */
+  private lastProgress = 0;
+  /** When set, a click has taken over the morph: 0 = tree, 1 = chart. */
+  private manualTarget: number | null = null;
+  private manualProgress = 0;
 
   constructor(opts: FlowCanvasOptions) {
     this.opts = opts;
@@ -99,6 +104,17 @@ export class FlowCanvas {
       this.visible = nowVisible;
     }).observe(canvas);
     requestAnimationFrame(this.frame);
+  }
+
+  /** Takes manual control of the morph and flips it. Returns true when the chart is now flat. */
+  toggleFlatten(): boolean {
+    if (this.manualTarget === null) this.manualProgress = this.lastProgress;
+    this.manualTarget = this.manualProgress > 0.5 ? 0 : 1;
+    if (!this.opts.animate) {
+      this.manualProgress = this.manualTarget;
+      this.frame(performance.now());
+    }
+    return this.manualTarget === 1;
   }
 
   /** Re-measures the canvas and the free space around the hero copy. */
@@ -188,7 +204,15 @@ export class FlowCanvas {
       for (let gy = 20; gy < this.height; gy += 32) ctx.fillRect(gx, gy, 1.5, 1.5);
     }
 
-    if (box.ok) this.drawChart(t, easeInOutCubic(Math.max(this.opts.animate ? this.idleProgress(t) : 0, this.scrollProgress)));
+    let progress: number;
+    if (this.manualTarget !== null) {
+      this.manualProgress += (this.manualTarget - this.manualProgress) * 0.06;
+      progress = this.manualProgress;
+    } else {
+      progress = Math.max(this.opts.animate ? this.idleProgress(t) : 0, this.scrollProgress);
+    }
+    this.lastProgress = progress;
+    if (box.ok) this.drawChart(t, easeInOutCubic(progress));
     if (this.visible && this.opts.animate) requestAnimationFrame(this.frame);
   };
 
