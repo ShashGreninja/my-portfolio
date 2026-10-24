@@ -1,0 +1,83 @@
+/* ---------- gallery progress (desktop pinned gallery only) ---------- */
+.gallery-progress { display: none; }
+@media (min-width: 1000px) {
+  .hwrap { position: relative; }
+  .gallery-progress {
+    position: absolute; left: var(--gutter); right: var(--gutter); bottom: 22px;
+    display: grid; grid-template-columns: minmax(0, 14em) minmax(0, 1fr) auto; align-items: center; gap: 20px;
+    font-size: 14px; color: #B7BBCB;
+  }
+  .gp-name { color: var(--paper); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .gp-track { height: 2px; background: var(--line-inv); border-radius: 2px; overflow: hidden; }
+  .gp-track i { display: block; height: 100%; background: var(--signal); transform-origin: 0 50%; transform: scaleX(0); }
+  .gp-count { font-variant-numeric: tabular-nums; }
+  .gp-count b { color: var(--paper); font-weight: 600; }
+}
+
+/* ---------- pointer spotlight on project panels ---------- */
+.panel::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, .16), transparent 60%);
+  opacity: 0; transition: opacity .4s var(--ease);
+}
+.panel:hover::after { opacity: 1; }
+.p-nest::after { background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(34, 48, 245, .09), transparent 60%); }
+
+/* ---------- stack: focus one tool, the rest step back ---------- */
+.srow li { cursor: default; outline: none; border-radius: 4px; }
+.srow li:focus-visible { color: var(--signal); font-stretch: 150%; }
+.stack-rows:has(li:hover, li:focus-visible) li:not(:hover):not(:focus-visible) { opacity: .4; }
+.srow li { transition: color .25s, font-stretch .5s var(--ease), opacity .3s; }
+.stack-hint { min-height: 3em; transition: color .3s; }
+.stack-hint.on { color: #fff; }
+.stack-hint b { color: var(--signal); font-weight: 600; }
+
+/* ---------- toast ---------- */
+.toast {
+  position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 24px); z-index: 95;
+  max-width: min(92vw, 30em); padding: 14px 20px; border-radius: 14px;
+  background: var(--ink); color: var(--paper); font-size: 15px; line-height: 1.4;
+  box-shadow: 0 12px 40px rgba(11, 12, 18, .35), 0 0 0 1px rgba(255, 255, 255, .08);
+  transform: translate(-50%, 140%); opacity: 0; transition: transform .6s var(--ease), opacity .4s;
+  pointer-events: none;
+}
+.toast.show { transform: translate(-50%, 0); opacity: 1; }
+.toast b { color: var(--signal); font-weight: 600; }
+
+/* ---------- keyboard shortcuts sheet ---------- */
+.keys-sheet {
+  border: 0; padding: 0; background: transparent; color: var(--paper); max-width: min(92vw, 440px); width: 100%;
+}
+.keys-sheet::backdrop { background: rgba(11, 12, 18, .55); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.keys-card { background: var(--ink); border-radius: 22px; padding: 28px; box-shadow: 0 0 0 1px rgba(255, 255, 255, .08), 0 30px 80px rgba(0, 0, 0, .45); }
+.keys-card h2 { font: 800 30px/1 var(--display); font-stretch: 125%; text-transform: uppercase; letter-spacing: -.02em; }
+.keys-card p { margin-top: 10px; color: #B7BBCB; font-size: 14px; }
+.keys-list { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 10px; }
+.keys-list li { display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 15px; }
+.keys-list kbd, .keys-card kbd {
+  font: 500 12px/1 var(--mono); min-width: 26px; text-align: center; padding: 6px 8px; border-radius: 7px;
+  background: var(--ink-2); border: 1px solid rgba(255, 255, 255, .14); border-bottom-width: 2px; color: var(--paper);
+}
+.keys-close { margin-top: 24px; width: 100%; padding: 13px; border-radius: 999px; border: 1px solid var(--line-inv); background: transparent; color: var(--paper); font: 500 14px/1 var(--body); cursor: pointer; }
+.keys-close:hover { background: var(--paper); color: var(--ink); }
+.keys-sheet[open] .keys-card { animation: sheet-in .5s var(--ease); }
+@keyframes sheet-in { from { transform: translateY(16px) scale(.98); opacity: 0; } }
+
+/* ---------- dev mode (Konami code) ---------- */
+html.dev-mode main * { outline: 1px solid rgba(34, 48, 245, .35); outline-offset: -1px; }
+html.dev-mode .dark *, html.dev-mode .blue * { outline-color: rgba(255, 90, 31, .45); }
+html.dev-mode body { background-image: linear-gradient(rgba(34, 48, 245, .06) 1px, transparent 1px), linear-gradient(90deg, rgba(34, 48, 245, .06) 1px, transparent 1px); background-size: 8px 8px; }
+.dev-badge {
+  position: fixed; right: 16px; bottom: calc(env(safe-area-inset-bottom, 0px) + 16px); z-index: 96;
+  padding: 10px 14px; border-radius: 12px; background: var(--signal); color: var(--ink);
+  font: 500 12px/1.5 var(--mono); box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+}
+
+/* ---------- poked hero letters ---------- */
+.name .ch.poked { color: var(--signal); }
+
+@media (hover: none) { .foot-keys { display: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .toast, .keys-sheet[open] .keys-card { transition: none; animation: none; }
+}

@@ -98,6 +98,22 @@ function initGallery(): void {
     const frame = $("#hwrap");
     const distance = (): number => track.scrollWidth - frame.clientWidth;
 
+    // progress readout under the gallery: which project is centred, and how far through we are
+    const names = $$(".panel h3").map((h) => (h.textContent ?? "").replace(/­/g, ""));
+    const fill = $("#gp-fill");
+    const nameEl = $("#gp-name");
+    const indexEl = $("#gp-index");
+    let shown = -1;
+    const updateProgress = (progress: number): void => {
+      fill.style.transform = `scaleX(${progress})`;
+      const i = Math.min(names.length - 1, Math.round(progress * (names.length - 1)));
+      if (i === shown) return;
+      shown = i;
+      nameEl.textContent = names[i] ?? "";
+      indexEl.textContent = String(i + 1);
+    };
+    updateProgress(0);
+
     const slide = gsap.to(track, {
       x: () => -distance(),
       ease: "none",
@@ -109,6 +125,7 @@ function initGallery(): void {
         scrub: 1,
         invalidateOnRefresh: true,
         anticipatePin: 1,
+        onUpdate: (self) => updateProgress(self.progress),
       },
     });
 

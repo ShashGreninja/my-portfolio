@@ -31,7 +31,7 @@
   .panel, .work-intro { height: min(calc(100vh - 150px), 720px); margin-top: 40px; }
 }
 @media (max-width: 999px) {
-  .work { padding-block: 110px; }
+  .work { padding-block: var(--space-section); }
   .htrack { flex-direction: column; gap: 16px; }
   .work-intro { width: auto; gap: 18px; margin-bottom: 24px; }
   .panel { width: auto; grid-template-columns: minmax(0, 1fr); }

@@ -13,6 +13,7 @@ the page is static HTML, and each interactive piece is a small typed module.
 - **Kinetic type.** The name is fitted edge to edge at any width, and letters thin out near the pointer.
 - **Pinned horizontal gallery** for projects on desktop, stacked cards on narrow screens.
 - Custom cursor, magnetic buttons, a scroll-velocity marquee, and scroll-linked reveals.
+- **Keyboard shortcuts.** Press `?` on the site. There are also a few easter eggs; the console is a good place to start.
 - Respects `prefers-reduced-motion`: animation loops, smooth scroll and reveals switch off.
 
 ## Structure
@@ -35,6 +36,10 @@ src/
     roleRotator.ts      rotating hero phrase
     clock.ts            local time (IST)
     copyEmail.ts        copy-to-clipboard with fallback
+    stackHints.ts       "where I've used it" hints, project panel spotlight
+    shortcuts.ts        number-key section jumps and the "?" sheet
+    easterEggs.ts       no spoilers
+    toast.ts            small status messages
   styles/               base tokens, then one stylesheet per area
 .github/workflows/      build and deploy to GitHub Pages
 ```

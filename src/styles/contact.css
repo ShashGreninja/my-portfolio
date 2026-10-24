@@ -1,12 +1,12 @@
-.contact { padding-block: clamp(120px, 14vw, 200px) 28px; position: relative; overflow: hidden; }
-.contact-top { display: flex; align-items: center; gap: 18px; margin-bottom: 28px; }
+.contact { padding-block: var(--space-section) 28px; position: relative; overflow: hidden; }
+.contact-top { display: flex; align-items: center; gap: 18px; margin-bottom: var(--space-head); }
 .contact-hook { opacity: .7; }
 .avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--cobalt); display: grid; place-items: center; font: 800 22px var(--display); font-stretch: 130%; color: #fff; flex: none; }
 
 .big-talk { font: 800 clamp(44px, 11vw, 200px)/.86 var(--display); font-stretch: 125%; white-space: nowrap; text-transform: uppercase; letter-spacing: -.045em; }
 .big-talk .o { color: transparent; -webkit-text-stroke: 2px var(--paper); }
 
-.contact-mid { position: relative; margin-top: clamp(40px, 6vw, 80px); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 30px; align-items: center; border-top: 1px solid var(--line-inv); padding-top: 36px; }
+.contact-mid { position: relative; margin-top: var(--space-block); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 30px; align-items: center; border-top: 1px solid var(--line-inv); padding-top: 36px; }
 @media (max-width: 760px) { .contact-mid { grid-template-columns: minmax(0, 1fr); } }
 .links { display: flex; flex-wrap: wrap; gap: 12px; }
 .pill { display: inline-flex; align-items: center; gap: 10px; padding: 16px 22px; border-radius: 999px; border: 1px solid var(--line-inv); font: 500 15px/1 var(--body); transition: background .4s var(--ease), color .4s var(--ease), border-color .4s; }
@@ -16,5 +16,8 @@
 .orb:hover { background: var(--signal); }
 .orb small { display: block; font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; opacity: .75; margin-top: 6px; }
 
-.foot { margin-top: clamp(70px, 9vw, 120px); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px 28px; color: #A3A8BA; }
+.foot { margin-top: var(--space-block); padding-top: 24px; border-top: 1px solid var(--line-inv); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px 28px; color: #A3A8BA; font-size: 14px; }
 .foot b { color: var(--paper); font-weight: 500; }
+.foot a { text-decoration: underline; text-decoration-color: rgba(255, 255, 255, .3); text-underline-offset: 3px; transition: color .25s, text-decoration-color .25s; }
+.foot a:hover { color: var(--paper); text-decoration-color: var(--signal); }
+.foot kbd { font: 500 12px/1 var(--mono); padding: 3px 6px; border: 1px solid var(--line-inv); border-radius: 5px; color: var(--paper); }
